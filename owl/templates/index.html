@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+
+	<title>Coverage Owl</title>
+	<meta name="description" content="Find and compare cheap car, home, and life insurance with CoverageOwl.com. Search hundreds of quotes at once.">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	
+	<!--Javascript-->
+	<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript" ></script>
+	<script src="{{STATIC_URL}}js/bootsrap.min.js" type="text/javascript" ></script>
+
+	<!--JQuery UI-->
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	
+	<!--CSS-->
+	<link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="{{STATIC_URL}}css/index.css" rel="stylesheet" type="text/css" />
+	
+	<script>
+		//Functionality tabs on homepage
+		$(document).ready(function () {
+			var currentab = "tab1";
+			$(".maintab-active").children().css("visibility","visible");
+			$(".maintab").click(function() {
+				$(".maintab").removeClass("maintab-active");
+				$(".maintab").children().css("visibility","hidden");
+				if (!$(this).hasClass("maintab-active")) {
+					$(this).addClass("maintab-active");
+					$(this).children().css("visibility","visible");
+				};
+				var id = $(this).attr('id');
+				if (!(id === currentab)) {
+					$("."+currentab).fadeOut('fast',function() {
+						$("."+id).fadeIn();
+						currentab = id
+					});
+				}
+			});
+		
+		
+		});
+	</script>
+</head>
+
+<body>
+
+	<div class="header_container">
+		<div class="header">
+			<img class="logo" height="60" src="{{STATIC_URL}}images/logo.png"/>
+			<div class="navigation">
+				<ul>
+					<li><a class="link" href="about.html">About</a></li> 
+					<li><a class="link" href="blog.html">Blog</a></li>
+					<li><a class="link" href="learn.html">Learning Center</a></li>
+					<li><a class="btn btn-info login" href="login.html">Login</a></li>
+			</div>
+		</div>
+	</div>
+
+	<div class="intro_container">
+		<div class="intro_bg">
+			<h1>The Newest Way to Find Insurance</h1>
+			<div class="mainbox">
+				<form>
+					<select class="insurancetype">
+						<option> Auto</option>
+						<option> Homeowners</option>
+						<option> Life</option>
+						<option> Renters</option>
+						
+					</select> 
+					<button class="btn btn-large btn-warning" value="submit">Find Insurance</button>
+				</form>
+				<h2>Submit your information anonymously, and let local agents bid on the coverage that
+				is right for you.</h2>
+			</div>
+		</div>
+	</div>
+	
+	<div class="main_content">
+		<div class="tabs_nav">
+			<div class="maintab maintab-active" id="tab1">
+				FIND YOUR NEEDS
+				<div class="carrot">▼</div>
+			</div>
+			<div class="maintab" id="tab2">
+				AGENT QUOTES
+				<div class="carrot">▼</div>
+			</div>
+			
+			<div class="maintab" id="tab3">
+				INSURER COMPARISON
+				<div class="carrot">▼</div>
+			</div>
+			<div class="maintab" id="tab4">
+				FREE AND SECURE
+				<div class="carrot">▼</div>
+			</div>
+		</div>
+		<div class="tabs_content">
+			<div class="content_one tab1">
+				<img src="{{STATIC_URL}}images/graph.png"/>
+				<div class="content-text">
+					<h1> Compare The Market </h1>
+					<h2> Based on your individual needs, compare the most 
+					popular insurance coverages chosen. Don't let the insurer
+					give you more or less coverage than you need!</h2>
+				</div>
+			</div>
+			<div class="slide content_one tab2">
+				tab2
+			</div>
+			<div class="slide content_one tab3">
+				tab3
+			</div>
+			<div class="slide content_four tab4">
+				<img src="{{STATIC_URL}}images/lock.png"/>
+				<div class="content-text">
+					<h1> We Are NOT Leads Salesmen </h1>
+					<h2> Everything is 100% free and anonymous. We protect any
+					personal information you optionally give us with our life. But seriously.</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

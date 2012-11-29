@@ -1,12 +1,12 @@
 from django.conf.urls import patterns, include, url
-
+from owl import views
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns('owl.views',
     # Examples:
-    # url(r'^$', 'coverage.views.home', name='home'),
+    url(r'^$','index'),
     # url(r'^coverage/', include('coverage.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
