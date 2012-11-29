@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block files %}
+	<link href="{{STATIC_URL}}css/auto.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function() {
+	$(".test").click(function() {
+		$("#pricestimate").css("width","90%");
+	});
+});
+
+</script>
+{% endblock %}
+	
+{% block content %}
+	<div class="subheader">
+		<h1>Compare prices right through our online dashboard</h1>
+		<div class="progress progress-success">
+    		<div id="pricestimate" class="bar" style="width: 60%;">Estimated Rate: $340 </div>
+    	</div>
+	</div>
+	<a class="test">Testing</a>
+	
+	<div class="main-info">
+		<div class="column"> </div>
+		<div class="column"> </div>
+		<div class="column"> </div>
+	
+	</div>
+{% endblock %}

@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<meta charset="UTF-8">
-<html lang='en'>
-<head>
+{% extends "base.html" %}
 
-	<title>Coverage Owl</title>
-	<meta name="description" content="Find and compare cheap car, home, and life insurance with CoverageOwl.com. Search hundreds of quotes at once.">
-	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
-	
-	<!--Javascript-->
-	<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript" ></script>
-	<script src="{{STATIC_URL}}js/bootsrap.min.js" type="text/javascript" ></script>
-
-	<!--JQuery UI-->
-	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-	
-	<!--CSS-->
-	<link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet" type="text/css" />
+{% block files %}
 	<link href="{{STATIC_URL}}css/index.css" rel="stylesheet" type="text/css" />
-	
+{% endblock %}
+
+{% block scripts %}	
 	<script>
 		//Functionality tabs on homepage
 		$(document).ready(function () {
@@ -39,41 +25,32 @@
 					});
 				}
 			});
-		
-		
+			
+			$("#find").click(function() {
+				value = $(".insurancetype").val();			
+				var forward = $(location).attr('href')+value;
+				window.location = forward;
+			});
 		});
+		
 	</script>
-</head>
 
-<body>
+{% endblock %}
 
-	<div class="header_container">
-		<div class="header">
-			<img class="logo" height="60" src="{{STATIC_URL}}images/logo.png"/>
-			<div class="navigation">
-				<ul>
-					<li><a class="link" href="about.html">About</a></li> 
-					<li><a class="link" href="blog.html">Blog</a></li>
-					<li><a class="link" href="learn.html">Learning Center</a></li>
-					<li><a class="btn btn-info login" href="login.html">Login</a></li>
-			</div>
-		</div>
-	</div>
-
+{% block content %}
 	<div class="intro_container">
 		<div class="intro_bg">
 			<h1>The Newest Way to Find Insurance</h1>
 			<div class="mainbox">
-				<form>
+				<div class="itype">
 					<select class="insurancetype">
-						<option> Auto</option>
-						<option> Homeowners</option>
-						<option> Life</option>
-						<option> Renters</option>
-						
+						<option value="auto"> Auto</option>
+						<option value="homeowners"> Homeowners</option>
+						<option value="life"> Life</option>
+						<option value="renters"> Renters</option>		
 					</select> 
-					<button class="btn btn-large btn-warning" value="submit">Find Insurance</button>
-				</form>
+					<button id="find" class="btn btn-large btn-warning" value="submit">Find Insurance</button>
+				</div>
 				<h2>Submit your information anonymously, and let local agents bid on the coverage that
 				is right for you.</h2>
 			</div>
@@ -126,6 +103,4 @@
 			</div>
 		</div>
 	</div>
-
-</body>
-</html>
+{% endblock %}

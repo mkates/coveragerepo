@@ -9,4 +9,7 @@ from django.shortcuts import render
 def index(request):
 	#return HttpResponse("Hello, world. You're at the poll index.")
 	return render_to_response('index.html',context_instance=RequestContext(request))
-	
+
+def auto(request):
+	print request
+	return render_to_response('auto.html',context_instance=RequestContext(request))
