@@ -2,6 +2,8 @@
 
 {% block files %}
 	<link href="{{STATIC_URL}}css/auto.css" rel="stylesheet" type="text/css" />
+	<script src="{{STATIC_URL}}js/bootstrap.tooltip.js"></script>
+	<script src="{{STATIC_URL}}js/bootstrap.popover.js"></script>
 {% endblock %}
 
 {% block scripts %}
@@ -10,24 +12,187 @@ $(document).ready(function() {
 	$(".test").click(function() {
 		$("#pricestimate").css("width","90%");
 	});
+	$(".toggler button").click(function() {
+		if (!($(this).hasClass("btn-success"))) {
+			$(".toggler button").removeClass("btn-success");
+			$(".toggler button").children('span').css("visibility","hidden");
+			$(this).addClass("btn-success");
+			$(this).children('span').css("visibility","visible");
+		};
+	});
+	$(function() {
+        $( "#slider" ).slider();
+    });
+    $(function () { 
+    	$("#popover").popover({
+    		trigger:'click',
+    		placement: 'left',
+    	});
+	});
+	$("#nohelp").click(function() {
+		$("#help-content").fadeOut('fast',function() {
+			$("#nohelp-content").fadeIn();
+		});
+	});
+	$("#help").click(function() {
+		$("#nohelp-content").fadeOut('fast',function() {
+			$("#help-content").fadeIn();
+		});
+	});
 });
 
 </script>
+
 {% endblock %}
 	
 {% block content %}
 	<div class="subheader">
 		<h1>Compare prices right through our online dashboard</h1>
-		<div class="progress progress-success">
-    		<div id="pricestimate" class="bar" style="width: 60%;">Estimated Rate: $340 </div>
+		<div class="progress progress-striped">
+    		<div id="pricestimate" class="bar" style="width: 80%;">Estimated Monthly Rate: $82 </div>
     	</div>
 	</div>
 	<a class="test">Testing</a>
 	
 	<div class="main-info">
-		<div class="column"> </div>
-		<div class="column"> </div>
-		<div class="column"> </div>
+		<div class="column"> 
+			<div class="column-header">
+				<div class="number">1</div>
+				<div class="title"> Applicant </div>
+			</div>
+			
+			<div class="column-body">
+				<div class="input_container">
+					<p>Gender</p>
+					<select>
+						<option>Male</option>
+						<option>Female</option>
+					</select>
+				</div>
+				<div class="input_container">
+					<p>Height</p>
+					<select>
+						<option>4' 11'</option>
+						<option>5' 0'</option>
+					</select>
+				</div>
+				<div class="input_container">
+					<p>Weight (in pounds)</p>
+					<input type="text" class="text-input" placeholder="ex. 215"/>
+				</div>
+				<div class="input_container">
+					<p>Birth Year</p>
+					<select>
+						<option>2000</option>
+						<option>1999</option>
+						<option>1998</option>
+						<option>1997</option>
+						<option>1996</option>
+						<option>1995</option>
+					</select>
+				</div>
+				<div class="input_container">
+					<p>Tobacco User?</p>
+					<select>
+						<option>No</option>
+						<option>Yes</option>
+					</select>
+				</div>
+
+			<div class="input_container">
+					<p>Check any of the following you have had in the past ten years</p>
+					<div class="disease">
+						<label class="checkbox dis">
+							<input type="checkbox" id="inlineCheckbox1" value="option1"> Heart Disease
+						</label>
+						<label class="checkbox dis">
+							<input type="checkbox" id="inlineCheckbox2" value="option2"> Stroke
+						</label>
+						<label class="checkbox dis">
+							<input type="checkbox" id="inlineCheckbox3" value="option3"> Pulmonary Disease
+						</label>
+						<label class="checkbox dis">
+							<input type="checkbox" id="inlineCheckbox1" value="option1"> Cancer
+						</label>
+						<label class="checkbox dis">
+							<input type="checkbox" id="inlineCheckbox2" value="option2"> Alzheimer's
+						</label>
+					</div>
+					<div class="disease">
+						<label class="checkbox dis">
+							<input type="checkbox" id="inlineCheckbox3" value="option3"> Diabetes
+						</label>
+						<label class="checkbox dis">
+							<input type="checkbox" id="inlineCheckbox3" value="option3"> Kidney Disease
+						</label>
+						<label class="checkbox dis">
+							<input type="checkbox" id="inlineCheckbox3" value="option3"> AIDS/HIV
+						</label>
+						<label class="checkbox dis">
+							<input type="checkbox" id="inlineCheckbox3" value="option3"> Mental Illness
+						</label>
+						<label class="checkbox dis">
+							<input type="checkbox" id="inlineCheckbox3" value="option3"> Liver Disease
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="column"> 
+			<div class="column-header">
+				<div class="number">2</div>
+				<div class="title"> Insurance Needs </div>
+			</div>
+			
+			<div class="column-body">
+				<div class="toggler">
+					<button id="nohelp" class="btn btn-success"><span>&#x2713; </span> I Know My Needs</button>
+					<button id="help" class="btn"><span class="hidden">&#x2713; </span>Help Me Decide</button>
+				</div>
+				<div id="nohelp-content">
+					<div class="input_container">
+						<p>Coverage Type</p>
+						<select>
+							<option value="Term">Term</option>
+							<option value="PermanentWhole">Whole</option>
+							<option value="PermanentUniversal">Universal</option>
+						</select>
+					</div>
+					<div class="input_container">
+						<p>Coverage Type<a class="help" id="popover" rel="popover" data-content="It's so simple to create a tooltop for my website!" data-original-title="Twitter Bootstrap Popover">?</a></p>
+						<select>
+							<option value="Term1YearAnnuallyRenewable">Term 1 Year Annually Renewable</option>
+							<option value="Term5YearGuaranteedLevelPremium">Term 5 Year Guaranteed Level Premium</option>
+							<option value="Term10YearGuaranteedLevelPremium">Term 10 Year Guaranteed Level Premium</option>
+							<option value="Term15YearGuaranteedLevelPremium">Term 15 Year Guaranteed Level Premium</option>
+							<option value="Term20YearGuaranteedLevelPremium">Term 20 Year Guaranteed Level Premium</option>
+							<option value="Term25YearGuaranteedLevelPremium">Term 25 Year Guaranteed Level Premium</option>
+							<option value="Term30YearGuaranteedLevelPremium">Term 30 Year Guaranteed Level Premium</option>
+						</select>
+					</div>
+					<div class="input_container">
+						<p>Coverage Amount</p>
+						<div id="slider"> </div>
+					</div>
+				</div>
+				<div id="help-content">
+					O you need some help do ya?
+				</div>
+			</div>
+		</div>
+		<div class="column">
+			<div class="column-header">
+				<div class="number">3</div>
+				<div class="title"> Preferences </div>
+				<div class="column-body">
+				<div class="input_container">
+					<p>Zip Code</p>
+					<input type="text" class="text-input" placeholder="ex. 07712"/>
+				</div>
+				<button class="btn btn-large btn-warning">Next Step: Receive Offers &rarr;</button?
+			</div>
+			</div>
+		</div>
 	
 	</div>
 {% endblock %}

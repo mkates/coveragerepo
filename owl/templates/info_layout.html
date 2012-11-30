@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block files %}
+	<link href="{{STATIC_URL}}css/info_layout.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block scripts %}	{% endblock %}
+
+{% block content %}
+	<div class="content_container">
+		<div class="sidebar">
+			<div class="section"><p>CoverageOwl Users</p></div>
+				<a href="about"><div class="element {% block about %}{% endblock %}">About</div></a>
+				<a href="#"><div class="element">Help</div></a>
+				<a href="#"><div class="element">Contact</div></a>
+				<a href="#"><div class="element">Follow</div></a>
+			<div class="section"><p>Insurance Partners</p></div>
+				<a href="#"><div class="element">Agents</div></a>
+				<a href="#"><div class="element">Insurers</div></a>
+				
+			<div class="section"><p>Press Resources</p></div>
+				<a href="#"><div class="element">Blog</div></a>
+				<a href="#"><div class="element">Team</div></a>
+				<a href="#"><div class="element">Press Materials</div></a>
+			
+			<div class="section"><p>Legal</p></div>
+				<a href="terms"><div class="element {% block terms %}{% endblock %}">Terms of Service</div></a>
+				<a href="privacy"><div class="element {% block privacy %}{% endblock %}">Privacy Policy</div></a>
+		</div>
+		
+		<div class="mainbar">
+			{% block info%}{% endblock %}
+		
+		</div>
+	</div>
+{% endblock %}

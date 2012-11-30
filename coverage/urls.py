@@ -7,6 +7,9 @@ admin.autodiscover()
 urlpatterns = patterns('owl.views',
     # Examples:
     url(r'^$','index'),
+    url(r'^about','about'),
+    url(r'^terms','terms'),
+	url(r'^privacy','privacy'),
     url(r'^auto','auto'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
